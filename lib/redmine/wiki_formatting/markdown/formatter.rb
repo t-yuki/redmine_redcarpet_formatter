@@ -76,6 +76,7 @@ module Redmine
         def to_html(&block)
           enable_hardwrap = Setting.plugin_redmine_redcarpet_formatter['enable_hardwrap'] == '1'
           enable_no_intra_emphasis = Setting.plugin_redmine_redcarpet_formatter['enable_no_intra_emphasis'] == '1'
+          enable_no_underscore_emphasis = Setting.plugin_redmine_redcarpet_formatter['enable_no_underscore_emphasis'] == '1'
           markdown = ::Redcarpet::Markdown.new(
             HTMLwithSyntaxHighlighting.new(:hard_wrap => enable_hardwrap),
             :autolink => true,
@@ -84,7 +85,8 @@ module Redmine
             :tables => true,
             :strikethrough => true,
             :superscript => true,
-            :no_intra_emphasis => enable_no_intra_emphasis
+            :no_intra_emphasis => enable_no_intra_emphasis,
+            :no_underscore_emphasis => enable_no_underscore_emphasis
           )
           markdown.render(@text)
         rescue => e

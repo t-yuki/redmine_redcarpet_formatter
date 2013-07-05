@@ -1,3 +1,4 @@
 en:
   label_enable_hardwrap: Enabled hard wrap text
   label_enable_no_intra_emphasis:  Do not parse emphasis inside of words
+  label_enable_no_underscore_emphasis:  Do not parse underscore as a emphasis
