@@ -30,7 +30,12 @@ module Redmine
           help_link = l(:setting_text_formatting) + ': ' +
             link_to(l(:label_help), url,
                     :onclick => "window.open(\"#{url}\", \"\", \"resizable=yes, location=no, width=480, height=640, menubar=no, status=no, scrollbars=yes\"); return false;")
-          javascript_tag("var wikiToolbar = new jsToolBar(document.getElementById('#{field_id}')); wikiToolbar.setHelpLink('#{escape_javascript url}'); wikiToolbar.draw();")
+          javascript_tag(
+            "var wikiToolbar = new jsToolBar(document.getElementById('#{field_id}')); wikiToolbar.setHelpLink('#{escape_javascript url}'); wikiToolbar.draw();" +
+            "wikiToolbar.draw_wo_compat22 = wikiToolbar.draw;" +
+            "wikiToolbar.draw = function(mode){ this.draw_wo_compat22(mode); $('.jstElements .help').remove(); };" +
+            "wikiToolbar.draw();"
+           )
         end
 
 

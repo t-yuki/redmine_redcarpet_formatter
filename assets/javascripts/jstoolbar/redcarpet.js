@@ -210,6 +210,10 @@ jsToolBar.prototype.elements.img = {
                 }
 	}
 }
+
+// spacer
+jsToolBar.prototype.elements.space5 = {type: 'space'}
+
 // help
 jsToolBar.prototype.elements.help = {
         type: 'button',
